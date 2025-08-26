@@ -1,0 +1,12 @@
+Logica Java
+public List<Juego> buscarPorGenero(List<Juego> juegos, String genero) {
+    List<Juego> resultado = new ArrayList<>();
+    for (Juego j : juegos) {
+        if (j.getGenero().equalsIgnoreCase(genero)) {
+            resultado.add(j);
+        }
+    }
+    return resultado;
+}
+SQL
+SELECT * FROM juegos WHERE genero = 'RPG';
