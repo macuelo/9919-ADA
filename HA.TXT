@@ -1,0 +1,2 @@
+INSERT INTO usuarios (nombre, correo, password)
+VALUES ('Carlos', 'carlos@mail.com', SHA2('clave123', 256));
