@@ -1,2 +1,28 @@
-INSERT INTO usuarios (nombre, correo, password)
-VALUES ('Carlos', 'carlos@mail.com', SHA2('clave123', 256));
+import java.util.LinkedList;
+
+class HashTable {
+    private LinkedList<String>[] tabla;
+
+    public HashTable(int tamaño) {
+        tabla = new LinkedList[tamaño];
+        for (int i = 0; i < tamaño; i++) {
+            tabla[i] = new LinkedList<>();
+        }
+    }
+
+    // función hash muy simple: longitud del string
+    private int hash(String clave) {
+        return clave.length() % tabla.length;
+    }
+
+    public void insertar(String clave) {
+        int idx = hash(clave);
+        tabla[idx].add(clave);
+    }
+
+    public void mostrarTabla() {
+        for (int i = 0; i < tabla.length; i++) {
+            System.out.println(i + " → " + tabla[i]);
+        }
+    }
+}
