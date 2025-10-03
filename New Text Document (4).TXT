@@ -1,8 +1,0 @@
-logica java 
-public List<Juego> rankDescargas(List<Juego> juegos) {
-    juegos.sort((j1, j2) -> Integer.compare(j2.getDescargas(), j1.getDescargas()));
-    return juegos;
-}
-SQL
-SELECT * FROM juegos ORDER BY descargas DESC;
-SELECT * FROM juegos ORDER BY rating DESC; 
