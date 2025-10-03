@@ -1,32 +1,44 @@
 
 package pruebas;
 
-import javax.swing.JOptionPane;
-
+import java.util.Scanner;
 public class Pruebas {
-
+   public static int buscar(int numeros [], int valor) {
+        int izquierda = 0;
+        int derecha = numeros.length - 1;
+        
+        while( izquierda <= derecha){
+             int medio = (izquierda+derecha)/2;
+            
+            if (numeros[medio] == valor){
+            return numeros[medio];
+            }else{
+                if (numeros[medio] < valor){
+                    izquierda = medio+1;
+                }else{
+                    derecha = medio-1;}
+                }
+        }
+            return -1;
+        }
+   
     public static void main(String[] args) {
   
-        int arreglo[] = {4,3,6,2,8,6,7,8,1};
-        int dato;
-        boolean b= false;
+        int numeros[] = {2,4,8,23,45,48,52,53,61,68,69,75,79,100};
         
-        dato = Integer.parseInt(JOptionPane.showInputDialog("INGRESE VALOR A BUSCAR:"));
+        Scanner teclado = new Scanner(System.in);
+        System.out.print("Ingresa el número a buscar: ");
+        int valor = teclado.nextInt();
         
-        int i=0;
-        while(i<arreglo.length && b == false){
+        int resultado = buscar(numeros, valor);
         
-            if(arreglo[i] == dato){
-                b=true;}
-        i++;
+        if (resultado != -1) {
+            System.out.println(" Posición: " + resultado);
+        } else {
+            System.out.println("No encontrado.");
         }
-        if (b == false){
-            JOptionPane.showMessageDialog(null,"numero no se encuentra en el arreglo");
-            }
-        else {
-            JOptionPane.showMessageDialog(null,"numero encontrado posicion : "+ (i-1));
-            }
-            
-        }
-    
+    }
+
 }
+        
+   
