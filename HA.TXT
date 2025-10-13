@@ -1,28 +1,13 @@
-import java.util.LinkedList;
+import java.util.*;
 
-class HashTable {
-    private LinkedList<String>[] tabla;
+Map<String, List<Integer>> invertedIndex = new HashMap<>();
 
-    public HashTable(int tamaño) {
-        tabla = new LinkedList[tamaño];
-        for (int i = 0; i < tamaño; i++) {
-            tabla[i] = new LinkedList<>();
-        }
-    }
+// Ejemplo: indexar documentos
+void addToIndex(String word, int docId) {
+    invertedIndex.computeIfAbsent(word, k -> new ArrayList<>()).add(docId);
+}
 
-    // función hash muy simple: longitud del string
-    private int hash(String clave) {
-        return clave.length() % tabla.length;
-    }
-
-    public void insertar(String clave) {
-        int idx = hash(clave);
-        tabla[idx].add(clave);
-    }
-
-    public void mostrarTabla() {
-        for (int i = 0; i < tabla.length; i++) {
-            System.out.println(i + " → " + tabla[i]);
-        }
-    }
+// Búsqueda
+List<Integer> getDocuments(String word) {
+    return invertedIndex.getOrDefault(word, Collections.emptyList());
 }
