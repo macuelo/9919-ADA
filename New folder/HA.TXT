@@ -1,0 +1,13 @@
+import java.util.*;
+
+Map<String, List<Integer>> invertedIndex = new HashMap<>();
+
+// Ejemplo: indexar documentos
+void addToIndex(String word, int docId) {
+    invertedIndex.computeIfAbsent(word, k -> new ArrayList<>()).add(docId);
+}
+
+// Búsqueda
+List<Integer> getDocuments(String word) {
+    return invertedIndex.getOrDefault(word, Collections.emptyList());
+}
